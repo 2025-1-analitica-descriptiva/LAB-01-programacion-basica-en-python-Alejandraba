@@ -24,3 +24,18 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    with open("files/input/data.csv", encoding="utf-8") as f:
+        x = [line.strip().split('\t') for line in f]
+    conteo = {}
+
+    for fila in x:
+        columna_5 = fila[4]  
+        pares = columna_5.split(",")  
+
+        for par in pares:
+            clave, _ = par.split(":")  
+            if clave in conteo:
+                conteo[clave] += 1  
+            else:
+                conteo[clave] = 1  
+    return conteo
